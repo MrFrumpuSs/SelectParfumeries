@@ -1,0 +1,57 @@
+.register {
+    background: #F3F3F3;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.register_form {
+    background: #FFFFFF;
+    padding: 40px 96px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.logo {
+    margin-bottom: 20px;
+}
+.title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 38px;
+    margin-bottom: 30px;
+}
+.input {
+    margin-bottom: 10px;
+}
+.button {
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+.link {
+    color: #c6b09f;
+    transition: .2s;
+    &:hover {
+        color: #000;
+    }
+}
+.back_ico {
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+
+@media (min-width: 0) and (max-width: 768px) {
+    .register_form {
+        padding: 20px 20px;
+    }
+    .logo {
+        margin-bottom: 15px;
+    }
+    .title {
+        font-size: 28px;
+        line-height: 32px;
+        margin-bottom: 20px;
+    }
+}

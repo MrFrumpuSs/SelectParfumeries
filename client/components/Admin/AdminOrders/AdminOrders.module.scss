@@ -1,0 +1,119 @@
+.content {
+    padding-top: 50px;
+    margin-left: 100px;
+    flex: 0 0 calc(100% - 500px);
+    .title {
+        font-size: 32px;
+        font-weight: 600;
+        margin-bottom: 50px;
+    }
+    .pagination {
+        margin-bottom: 30px;
+    }
+    .table {
+        font-family: 'Proxima Nova';
+        width: 100%;
+        .table_head {
+            th {
+                text-align: left;
+                font-weight: 600;
+                font-size: 16px;
+                padding-left: 10px;
+                padding-bottom: 20px;
+                &:first-child {
+                    padding-left: 0;
+                }
+            }
+        }
+        .item {
+            td {
+                border-bottom: 1px solid #D5DAE1;
+                padding: 20px;
+            }
+            width: 100%;
+            &_title,
+            &_number,
+            &_email,
+            &_price {
+                font-size: 16px;
+            }
+            &_btns_inner {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                .edit {
+                    margin-right: 20px;
+                    max-width: 150px;
+                    padding: 13px;
+                }
+                .remove {
+                    color: #c6b09f;
+                    transition: .2s;
+                    &:hover {
+                        color: #000;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 0) and (max-width: 768px) {
+    .content {
+        padding: 30px;
+        margin-left: 0;
+        flex: 0 0 100%;
+        .table {
+            .table_head {
+                display: none;
+            }
+            .item {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                td {
+                    border-bottom: unset;
+                    padding: 15px;
+                    width: 100%;
+                }
+                width: 100%;
+                &_img {
+                    flex: 0 0 30%;
+                }
+                &_title {
+                    &::before {
+                        content: 'Фамилия Имя: ';
+                    }
+                }
+                &_number {
+                    &::before {
+                        content: 'Номер: ';
+                    }
+                }
+                &_email {
+                    &::before {
+                        content: 'Email: ';
+                    }
+                }
+                &_price {
+                    &::before {
+                        content: 'Цена: ';
+                    }
+                }
+                &_title {
+                    flex: 0 0 100%;
+                }
+                &_number,
+                &_email { 
+                    flex: 0 0 50%;
+                    word-break: break-word;
+                }
+                &_btns_inner {
+                    border-bottom: 1px solid #D5DAE1;
+                    padding-bottom: 10px;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+}

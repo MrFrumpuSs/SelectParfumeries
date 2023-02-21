@@ -1,0 +1,12 @@
+.row_title {
+    font-family: 'Proxima Nova';
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+@media (min-width: 0) and (max-width: 768px) {
+    .row_title {
+        display: none;
+    }
+}

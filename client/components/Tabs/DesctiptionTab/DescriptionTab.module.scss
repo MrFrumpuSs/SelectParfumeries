@@ -1,0 +1,48 @@
+.row {
+    margin-bottom: 15px;
+    overflow: hidden;
+    &:after {
+        content: "\A0";
+        display: block;
+        overflow: hidden;
+        border-bottom: 1px dotted #B3B3B3;
+        margin-top: -2px;
+    }
+    .cell {
+        font-size: 15px;
+        &:first-child {
+            float: left;
+            color: #B3B3B3;
+            max-width: 150px;
+        }
+        &:last-child {
+            padding-left: 5px;
+            float: right;
+            max-width: 200px;
+        }
+    }
+    .cell:first-child:after {
+        content: "";
+        display: inline-block;
+        width: 5px;
+    }
+}
+.description {
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 20px;
+    white-space: pre-wrap;
+}
+.characteristics_title {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+.characteristics {
+    max-width: 380px;
+}
+
+
+
+  

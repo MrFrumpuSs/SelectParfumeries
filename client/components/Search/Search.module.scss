@@ -1,0 +1,43 @@
+.search {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .6);
+    display: none;
+    justify-content: center;
+    padding-top: 200px;
+    &.active {
+        display: flex;
+    }
+}
+.inner {
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    .input {
+        margin-right: 10px;
+    }
+    .button {
+        max-width: 300px;
+    }
+}
+
+@media (min-width: 0) and (max-width: 768px) {
+    .inner {
+        padding: 20px;
+        max-width: unset;
+        flex-direction: column;
+        height: unset;
+        .input {
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+        .button {
+            max-width: unset;
+        }
+    }
+}

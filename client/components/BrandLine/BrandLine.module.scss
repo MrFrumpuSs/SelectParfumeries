@@ -1,0 +1,87 @@
+.line {
+    padding-top: 80px;
+}
+.inner {
+    display: flex;
+}
+.flex {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin-right: 30px;
+}
+.image {
+    img {
+        object-fit: contain !important;
+    }
+}
+.brand {
+    padding: 20px 40px;
+    position: relative;
+    width: 100%;
+    img {
+        object-fit: cover;
+        user-select: none;
+        pointer-events: none;
+    }
+}
+.text {
+    position: relative;
+    z-index: 2;
+}
+.title {
+    font-size: 48px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+.gobrand {
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    transition: .2s;
+    svg {
+        margin-left: 5px;
+    }
+    &:hover {
+        color: #c6b09f;
+    }
+}
+
+@media (min-width: 0) and (max-width: 768px) {
+    .line {
+        padding-top: 40px;
+    }
+    .inner {
+        display: flex;
+        flex-direction: column;
+    }
+    .flex {
+        order: 1;  
+        margin-right: 0px;
+    }
+    .brand {
+        order: 0;
+        padding: 0 0;
+        position: relative;
+        width: 100%;
+        img {
+            display: none !important;
+        }
+        margin-bottom: 30px;
+    }
+    .text {
+        position: relative;
+        z-index: 2;
+    }
+    .title {
+        font-size: 36px;
+    }
+    .gobrand {
+        font-size: 12px;
+    }
+}

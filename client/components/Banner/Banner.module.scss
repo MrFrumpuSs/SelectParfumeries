@@ -1,0 +1,96 @@
+.slider {
+    height: 650px;
+}
+.slide {
+    height: inherit;
+    background-color: #F0F0F0;
+    &_inner {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    .img {
+        z-index: 1;
+        object-fit: cover;
+    }
+    .content {
+        max-width: 500px;
+        position: relative;
+        z-index: 2;
+        .title {
+            font-size: 48px;
+            letter-spacing: 1px;
+            color: #000;
+            font-weight: 600;
+            margin-bottom: 20px;
+            max-width: 550px;
+            text-shadow: 0px 0px 50px #fff;
+        }
+        .description {
+            font-size: 18px;
+            max-width: 300px;
+            line-height: 24px;
+            margin-bottom: 20px;
+            text-shadow: 0px 0px 8px #fff;
+        }
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 1px;
+            font-size: 13px;
+            svg {
+                margin-left: 10px;
+            }
+        }
+        &.white {
+            .title {
+                color: #fff;
+            }
+            .description {
+                color: #fff;
+            }
+        }
+    }
+}
+
+@media (min-width: 0) and (max-width: 768px) {
+    .slider {
+        height: 300px;
+    }
+    .slide {
+        &_inner {
+            justify-content: center;
+            align-items: flex-start;
+        }
+        .content {
+            padding: 10px;
+            max-width: unset;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            text-align: right;
+            width: 100%;
+            height: 100%;
+            .title {
+                font-size: 25px;
+                line-height: 40px;
+                margin-bottom: 0;
+                max-width: 290px;
+                text-shadow: unset;
+            }
+            .description {
+                max-width: 290px;
+            }
+            .btn {
+                padding: 13px;
+                position: absolute;
+                bottom: 40px;
+                left: 0;
+                width: 150px;
+            }
+        }
+    }
+}

@@ -1,0 +1,216 @@
+.card {
+    padding-top: 50px;
+    .top {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 50px;
+    }
+    .sliders {
+        margin-right: 70px;
+        width: calc(65% - 70px);
+        height: 770px;
+        img {
+            object-fit: contain;
+        }
+        .slider {
+            height: 600px;
+            width: 100%;
+            margin-bottom: 20px
+        }
+        .thumbs {
+            height: 20%;
+            box-sizing: border-box;
+            padding: 10px 0;
+        }
+    }
+    .text {
+        flex: 0 0 35%;
+        .title {
+            font-size: 42px;
+            line-height: 48px;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .point {
+            margin-bottom: 10px;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+        }
+        .variations {
+            margin-bottom: 20px;
+            display: flex;
+        }
+        .price {
+            transition: .2s;
+            font-size: 32px;
+            line-height: 36px;
+            letter-spacing: .8px;
+            font-weight: normal;
+        }
+        .sale_price {
+            font-size: 28px;
+            line-height: 30px;
+            letter-spacing: .8px;
+            text-decoration: line-through;
+            color: #B3B3B3;
+            margin-right: 15px;
+        }
+        .price_box {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        .btn {
+            max-width: 300px;
+        }
+    }
+    .form {
+        flex: 0 0 100%;
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: 0;
+        .input {
+            flex: 1 0 calc(50% - 20px);
+            margin-bottom: 30px;
+            &:nth-child(even) {
+                margin-left: 40px;
+            }
+        }
+    }
+    .reviews {
+        margin-top: 50px;
+        .title {
+            margin-bottom: 80px;
+            text-align: center;
+            font-size: 36px;
+            text-transform: uppercase;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 5px;
+            &:before {
+                content: '';
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 0;
+                width: 100px;
+                height: 2px;
+                background-color: #000;
+            }
+        }
+        .reviews_inner {
+            display: flex;
+            justify-content: space-between;
+            .left {
+                display: flex;
+                flex-direction: column;
+                margin-right: 120px;
+                width: 50%;
+                .review {
+                    padding-bottom: 20px;
+                    border-bottom: 1px solid #D5DAE1;
+                    margin-bottom: 30px;
+                    &_header {
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 30px;
+                    }
+                    .fio {
+                        font-weight: 600;
+                    }
+                    .text {
+                        line-height: 24px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 500px) and (max-width: 768px) {
+    .card {
+        .sliders {
+            height: 570px;
+            .slider {
+                height: 400px;
+            }
+            .thumbs {
+                height: 110px;
+            }
+        }
+    }
+}
+
+@media (min-width: 0) and (max-width: 499px) {
+    .card {
+        .sliders {
+            height: 420px;
+            .slider {
+                height: 300px;
+            }
+            .thumbs {
+                height: 70px;
+            }
+        }
+    }
+}
+
+@media (min-width: 0) and (max-width: 768px) {
+    .card {
+        padding-top: 50px;
+        .top {
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+        .sliders {
+            margin-right: 0;
+            width: 100%;
+
+            .thumbs {
+                padding: 5px 0;
+            }
+        }
+        .text {
+            flex: 0 0 35%;
+            .title {
+                word-break: break-all;
+            }
+            .btn {
+                max-width: unset;
+            }
+        }
+        .form {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: 0;
+            .input {
+                flex: 0 0 100%;
+                margin-bottom: 20px;
+                &:nth-child(even) {
+                    margin-left: 0;
+                }
+            }
+        }
+        .reviews {
+            .title {
+                margin-bottom: 40px;
+                font-size: 30px;
+            }
+            .reviews_inner {
+                justify-content: unset;
+                flex-direction: column;
+                .left {
+                    order: 1;
+                    width: 100%;
+                }
+                .right {
+                    order: 0;
+                    margin-bottom: 50px;
+                }
+            }
+        }
+    }
+}

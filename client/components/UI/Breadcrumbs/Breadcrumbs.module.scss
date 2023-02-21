@@ -1,0 +1,20 @@
+.breadcrumbs {
+    display: flex;
+    margin-bottom: 20px;
+}
+.devider {
+    padding: 0 5px;
+}
+.item {
+    color: #B3B3B3;
+    font-size: 16px;
+    transition: .2s;
+    letter-spacing: 1px;
+    &.link {
+        color: #000;
+        font-weight: 600;
+        &:hover {
+            color: #c6b09f;
+        }
+    }
+}

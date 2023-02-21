@@ -1,0 +1,74 @@
+.form {
+    flex: 0 0 70%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 50px;
+    .input {
+        flex: 1 0 calc(50% - 20px);
+        margin-bottom: 30px;
+        &:nth-child(even) {
+            margin-left: 40px;
+        }
+    }
+}
+.inner {
+    display: flex;
+}
+.checkout {
+    flex-grow: 1;
+    margin-top: 40px;
+}
+.info {
+    margin-bottom: 15px;
+}
+.total {
+    flex: 0 0 30%;
+}
+.total_inner {
+    .title {
+        font-size: 24px;
+        letter-spacing: 1px;
+        font-style: 600px;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #D5DAE1;
+    }
+    .ul {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #D5DAE1;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+    .count,
+    .price {
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+}
+
+@media (min-width: 0) and (max-width: 768px) {
+    .form {
+        margin-bottom: 50px;
+        flex: 0 0 100%;
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: 0;
+        .input {
+            flex: 0 0 100%;
+            margin-bottom: 20px;
+            &:nth-child(even) {
+                margin-left: 0;
+            }
+        }
+    }
+    .inner {
+        flex-direction: column;
+    }
+    .checkout {
+        margin-top: 20px;
+    }
+    .total {
+        flex: 0 0 100%;
+    }
+}

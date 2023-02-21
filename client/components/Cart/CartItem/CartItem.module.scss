@@ -1,0 +1,114 @@
+.image_td {
+    width: 100px;
+    .image {
+        margin-right: 20px;
+        position: relative;
+        width: 80px;
+        height: 80px;
+        img {
+            object-fit: cover;
+        }
+    }
+}
+.name_td {
+    width: 380px;
+    .title {
+        max-width: 340px;
+        font-size: 16px;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+    }
+    .quantity {
+        color: #B3B3B3;
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+}
+.quantity_td {
+    .quantity_inp {
+        width: 100px;
+    }
+    width: 150px;
+}
+.quantity_price {
+    width: 150px;
+    .price {
+        font-size: 16px;
+        letter-spacing: 1px;
+        width: 120px;
+    }
+}
+.quantity_delete {
+    .delete {
+        cursor: pointer;
+        color: #c6b09f;
+        transition: .2s;
+        &:hover {
+            color: #000;
+        }
+    }
+}
+.tr {
+    td {
+        padding: 10px 0;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1500px) {
+    .name_td {
+        width: 330px;
+        .title {
+            max-width: 320px;
+            line-height: 20px;
+        }
+    }
+    .quantity_price {
+        width: 120px;
+        .price {
+            width: 115px;
+        }
+    }
+}
+
+@media (min-width: 0) and (max-width: 589px) {
+    .image_td {
+        width: unset;
+        flex: 0 0 30%;
+        margin-right: 10px;
+        .image {
+            margin-right: 20px;
+        }
+    }
+    .name_td {
+        width: unset;
+        flex: 0 0 calc(70% - 20px);
+    }
+    .quantity_td {
+        width: unset;
+        flex: 0 0 50%;
+    }
+    .quantity_price {
+        width: unset;
+        flex: 0 0 50%;
+        .price {
+            width: unset;
+            padding-top: 20px;
+            font-size: 18px;
+        }
+    }
+    .quantity_delete {
+        display: flex;
+        padding: 20px 0 !important;
+        flex: 0 0 100%;
+        border-bottom: 1px solid #D5DAE1;
+    }
+
+    .tr {
+        margin-bottom: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        td {
+            padding: unset;
+        }
+    }
+}

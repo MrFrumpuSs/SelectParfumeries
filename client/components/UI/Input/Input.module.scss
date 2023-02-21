@@ -1,0 +1,69 @@
+.input_box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.label,
+.label_cb {
+    color: #333F51;
+    line-height: 24px;
+    margin-bottom: 6px;
+}
+.input {
+    background: #FFFFFF;
+    border-bottom: 1px solid #D5DAE1;
+    padding: 11px 14px;
+    width: 100%;
+    transition: .2s;
+    &:focus {
+        border-bottom: 1px solid #949699;
+    }
+    &_error {
+        .input {
+            border-bottom: 1px solid #EF5944;
+            &::placeholder {
+                color: #EF5944;
+            }
+        }
+    }
+}
+.error {
+    color: #EF5944;
+    align-self: flex-start;
+    margin: 5px 0;
+}
+
+.label_cb {
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        transition: .2s;
+        border: 1px solid #000;
+    }
+} 
+.input_cb {
+    display: none;
+}
+.input_cb:checked + .label_cb {
+    &::before {
+        background-color: #000;
+        border-radius: 2px;
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 3px;
+        background: url('../../../assets/BsCheck2.svg');
+        background-size: 15px;
+        width: 15px;
+        height: 15px;
+    }
+}

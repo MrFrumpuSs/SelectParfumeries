@@ -1,0 +1,5 @@
+{
+    "serverPort": 8089,
+    "dbUrl": "mongodb://root:shurik37@185.104.115.124:27017/parfum?authMechanism=DEFAULT&authSource=admin",
+    "secretKey": "parfum-secret-key-qdwytivytgdqvcwyiftqdw"
+}

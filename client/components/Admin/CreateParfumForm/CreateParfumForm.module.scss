@@ -1,0 +1,76 @@
+.register_form {
+    display: flex;
+    flex-wrap: wrap;
+    height: fit-content;
+    margin-bottom: 50px;
+}
+.left, .right {
+    flex: 0 0 calc(50% - 25px);
+}
+.left {
+    margin-right: 50px;
+}
+.input {
+    margin-bottom: 20px;
+}
+.inputs_row {
+    display: flex;
+    align-items: center;
+    .input {
+        margin-right: 20px;
+    }
+}
+.button {
+    flex: 0 0 100%;
+    height: 50px;
+}
+.append {
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.remove {
+    padding: 10px;
+    height: 40px;
+}
+.select {
+    width: 100%;
+    margin-bottom: 20px;
+    &:first-child {
+        margin-right: 20px;
+    }
+}
+
+@media (min-width: 0) and (max-width: 768px) {
+    .register_form {
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+
+    }
+    .left, .right {
+        flex: unset;
+    }
+    .left {
+        margin-right: 0;
+    }
+    .input {
+        margin-bottom: 30px;
+    }
+    .inputs_row {
+        display: flex;
+        align-items: center;
+        .input {
+            margin-right: 10px;
+        }
+    }
+    .remove {
+        padding: 5px;
+        height: 30px;
+        font-size: 12px;
+    }
+    .select {
+        &:first-child {
+            margin-right: 10px;
+        }
+    }
+}

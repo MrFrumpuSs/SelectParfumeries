@@ -1,0 +1,53 @@
+.sidebar {
+    flex: 0 0 250px;
+    background-color: #F5F5F5;
+    padding: 20px;
+    .logo  {
+        display: block;
+        position: relative;
+        width: 150px;
+        height: 72px;
+        margin-bottom: 30px;
+        img {
+            object-fit: contain;
+        }
+    }
+    .ul {
+        .li {
+            margin-bottom: 20px;
+            &.active {
+                a {
+                    color: #c6b09f;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 0) and (max-width: 768px) {
+    .sidebar {
+        flex: 0 0 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        .logo  {
+            width: 110px;
+            height: 55px;
+            margin-bottom: 20px;
+        }
+        .ul {
+            display: flex;
+            flex-wrap: wrap;
+            .li {
+                flex: 0 0 50%;
+                margin-bottom: 20px;
+                &.active {
+                    a {
+                        color: #c6b09f;
+                    }
+                }
+            }
+        }
+    }
+}
