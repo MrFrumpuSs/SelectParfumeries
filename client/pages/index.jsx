@@ -16,7 +16,7 @@ const Index = ({ fetchbanner, fetchnews, fetchBestsales, fetchBrandline, fetchBe
     return (
         <>
             <Navbar></Navbar>
-            <Banner data={fetchbanner.banners} ></Banner>
+            <Banner data={fetchbanner.banners}></Banner>
             <ProductLine data={fetchnews} title="Новинки" href={'/catalog'} className={styles.line}></ProductLine>
             <ProductLine data={fetchBestsales} title="Бестселлеры" href={'/catalog?sort=popular'}></ProductLine>
             <BrandLine data={fetchBrandline}></BrandLine>

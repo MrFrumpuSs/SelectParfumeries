@@ -38,7 +38,7 @@ const Banner = ({data}) => {
                 {data.map(banner=>
                     <SwiperSlide className={styles.slider} key={banner._id}>
                         <div className={styles.slide}>
-                            <Image priority className={styles.img} src={banner.img} layout="fill"></Image>
+                            <Image priority className={styles.img} src={banner.img} layout="fill" alt={'banner_' + banner._id}></Image>
                             <div className={[styles.slide_inner, 'container'].join(' ')}>
                                 <div className={banner.white ? [styles.content, styles.white].join(' ') : styles.content}>
                                     <h1 className={styles.title}>{banner.title}</h1>

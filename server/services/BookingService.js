@@ -1,13 +1,22 @@
 import Booking from '../models/Booking.js';
 import ApiError from '../controllers/ErrorController.js';
+import { sendBooking } from '../messages/orderEmail.js';
+
 
 class BookingService {
     async create(booking) {
 
         const createdBooking = await Booking.create(booking);
         await createdBooking.save();
-
+        
+        await sendBooking(createdBooking);
+        
         return createdBooking;
+    }
+
+    async updateStatus(order, id) {
+        const updatedBooking = await Booking.findOneAndUpdate({_id: id}, order, {new: true});
+        return updatedBooking;
     }
 
     async getAll({limit, page}) {

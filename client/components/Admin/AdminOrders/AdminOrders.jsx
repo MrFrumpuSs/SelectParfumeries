@@ -6,6 +6,9 @@ import Link from 'next/link'
 import Pagination from '../../Pagination/Pagination'
 import { getPageCount } from '../../../utils/pages'
 import { useRouter } from 'next/router'
+import SetStatus from '../../SetStatus/SetStatus'
+import OrderService from '../../../API/OrderService'
+
 
 const AdminOrders = ({data, count, page, setPage}) => {
     const router = useRouter();
@@ -15,6 +18,9 @@ const AdminOrders = ({data, count, page, setPage}) => {
     page = page || 1;
     const changePage = (page) => {
         setPage(page, pathquery);
+    }
+    const setStatus = async (id, status) => {
+        const response = await OrderService.updateStatus(status, id);
     }
     return (
         <div className={styles.content}>
@@ -29,7 +35,7 @@ const AdminOrders = ({data, count, page, setPage}) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map(order=>
+                    {data.map(order=> 
                         <tr key={order._id} className={styles.item}>
                             <td className={styles.item_title}>{order.sname + ' ' + order.name}</td>
                             <td className={styles.item_number}>{order.number}</td>
@@ -37,6 +43,7 @@ const AdminOrders = ({data, count, page, setPage}) => {
                             <td className={styles.item_price}>{order.price} ₽</td>
                             <td className={styles.item_btns}>
                                 <div className={styles.item_btns_inner}>
+                                    <SetStatus className={styles.status_select} _id={order._id} status={order.status} setStatus={setStatus}></SetStatus>
                                     <Button onClick={e=> router.push('/order/' + order._id)} className={styles.edit}>Открыть заказ</Button>
                                 </div>
                             </td>

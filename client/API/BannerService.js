@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = 'https://parfum.beknazaryanstudio.ru:8080/api/banner';
+const API_URL = 'https://selectparfumeries.ru:8080/api/banner';
 
 export default class BannerService {
 

@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
   images: {
-    domains: ['localhost', 'parfum.beknazaryanstudio.ru'],
+    domains: ['localhost', 'selectparfumeries.ru'],
   },
 }
 

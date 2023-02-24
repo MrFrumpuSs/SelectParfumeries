@@ -11,6 +11,17 @@ class RequestController {
         }
     }
 
+    async updateStatus(req, res, next) {
+        try {
+            const { status } = req.body;
+            const { id } = req.params
+            const request = await RequestService.updateStatus({ status }, id);
+            res.json(request);
+        } catch (e) {
+            next(e);
+        }
+    }
+
     async getAll(req, res, next) {
         try {
             let {limit, page} = req.query;

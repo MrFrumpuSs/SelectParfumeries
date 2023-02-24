@@ -5,6 +5,7 @@ const Request = new Schema({
     fio: {type: String, required: true},
     number: {type: String, required: true},
     email: {type: String},
+    status: {type: String, default: 'pending'},
 });
 
 

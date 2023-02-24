@@ -13,7 +13,8 @@ const Order = new Schema({
             count: {type: Number, required: true}
         }
     ],
-    price: {type: Number, required: true}
+    price: {type: Number, required: true},
+    status: {type: String, default: 'pending'}
 });
 
 export default mongoose.model('Order', Order);

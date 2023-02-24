@@ -32,6 +32,8 @@ const ProductPage = ({ fetchparfum, breadCrumbsItems }) => {
     const [btnLock, setBtnLock] = useState(false);
     const [modal, setModal] = useState(false);
     const [modal2, setModal2] = useState(false);
+    const [modal3, setModal3] = useState(false);
+    const [modalIMG, setModalIMG] = useState('');
 
     const addProductToCart = () => {
         dispatch(addToCart({id: fetchparfum._id, variation: price._id}));
@@ -43,7 +45,7 @@ const ProductPage = ({ fetchparfum, breadCrumbsItems }) => {
     const [regError, setRegError] = useState('');
     const [modal2Txt, setModal2Txt] = useState('Ожидайте, в ближайшее время с вами свяжется менеджер для уточнения заказа.');
 
-    const submitForm = async (data) => {;
+    const submitForm = async (data) => {
         setBtnLock(true);
         const response = await RequestService.create(data);
         setModal2Txt('Ожидайте, в ближайшее время с вами свяжется менеджер для уточнения заказа.');
@@ -57,7 +59,7 @@ const ProductPage = ({ fetchparfum, breadCrumbsItems }) => {
         setBtnLock(false);
     }
 
-    const submitReview = async (data) => {;
+    const submitReview = async (data) => {
         setBtnLock(true);
         const response = await ReviewService.create(data, fetchparfum._id);
         setModal2Txt('Отзыв успешно размещен!');
@@ -66,14 +68,14 @@ const ProductPage = ({ fetchparfum, breadCrumbsItems }) => {
             setRegError(response.data.error);
             setBtnLock(false);
         }
-        fetchparfum.reviews.unshift({fio: data.fio, email: data.email, text: data.text})
+        fetchparfum.reviews.unshift({fio: data.fio, email: data.email, text: data.text, img: response.data.img})
         setModal(false);
         setModal2(true);
         setBtnLock(false);
     }
 
     const [tabs, setTabs] = useState([
-        {title: 'Описание', value: 'description', component: DescriptionTab, props: {description: fetchparfum.description, characteristics: fetchparfum.characteristics}},
+        {title: 'Описание', value: 'description', component: DescriptionTab, props: {description: fetchparfum.description, characteristics: fetchparfum.characteristics, itemprop: "description"}},
     ]);
     const [activeTab, setActiveTab] = useState(tabs[0]);
 
@@ -84,11 +86,14 @@ const ProductPage = ({ fetchparfum, breadCrumbsItems }) => {
     return (
         <>
         <Head>
-            <title>Select Parfumeries | {fetchparfum.name}</title>
+            <title>{fetchparfum.name} - Select Parfumeries</title>
             <meta name="description" content={fetchparfum.description} />
+            <meta property="og:title" content={fetchparfum.name + ' - Select Parfumeries'}/>
+            <meta property="og:description" content={fetchparfum.name + ' - Select Parfumeries'}/>
+            <meta property="og:image" content={fetchparfum.img[0]}/>
         </Head>
             <Navbar></Navbar>
-            <section className={styles.card}>
+            <section className={styles.card} itemScope itemType="http://schema.org/Product">
                 <div className={[styles.card_inner, 'container'].join(' ')}>
                     <Breadcrumbs data={breadCrumbsItems}></Breadcrumbs>
                     <div className={styles.top}>
@@ -96,7 +101,7 @@ const ProductPage = ({ fetchparfum, breadCrumbsItems }) => {
                             <Swiper style={{"--swiper-navigation-color": "#000", '--swiper-navigation-size': '30px'}} spaceBetween={10} navigation={true} thumbs={{ swiper: thumbsSwiper }} modules={[ Navigation, Thumbs]} className={styles.slider}>
                                 {fetchparfum.img.map((img, index)=>
                                     <SwiperSlide key={index}>
-                                        <Image loading="lazy" src={img} layout='fill'></Image>
+                                        <Image itemProp="image" loading="lazy" src={img} layout='fill'></Image>
                                     </SwiperSlide>
                                 )}
                             </Swiper>
@@ -109,8 +114,8 @@ const ProductPage = ({ fetchparfum, breadCrumbsItems }) => {
                             </Swiper>
                         </div>
                         <div className={styles.text}>
-                            <h1 className={styles.title}>{fetchparfum.name}</h1>
-                            <p className={styles.point}>Бренд: {fetchparfum.brand.name}</p>
+                            <h1 className={styles.title} itemProp="name">{fetchparfum.name}</h1>
+                            <p className={styles.point} itemProp="brand">Бренд: {fetchparfum.brand.name}</p>
                             <p className={styles.point}>Объем / мл</p>
                             <div className={styles.variations}>
                                 {fetchparfum.variations.map(variation=>
@@ -119,11 +124,11 @@ const ProductPage = ({ fetchparfum, breadCrumbsItems }) => {
                             </div>
                             {price.price === 0 
                             ?
-                            <div className={styles.price_box}>
+                            <div itemProp="price" className={styles.price_box}>
                                 <Button className={styles.btn} onClick={e=> modal ? setModal(false) : setModal(true)}>Запросить цену</Button>
                             </div>
                             :
-                            <div className={styles.price_box}>
+                            <div itemProp="price" className={styles.price_box}>
                                 {fetchparfum.sale && price.sale ?
                                     <>
                                         <p className={styles.sale_price}>{price.price} ₽</p>
@@ -145,16 +150,21 @@ const ProductPage = ({ fetchparfum, breadCrumbsItems }) => {
                     <div className={styles.reviews}>
                         <h1 className={styles.title}>Отзывы</h1>
                         <div className={styles.reviews_inner}>
-                            <div className={styles.left}>
+                            <div className={styles.left} itemProp="reviews">
                                 {fetchparfum.reviews.map(review=>
-                                    <div key={review._id} className={styles.review}>
+                                    <div key={review._id} itemProp="review" className={styles.review}>
                                         <div className={styles.review_header}>
                                             <h3 className={styles.fio}>{review.fio}</h3>
                                             {review.email.length > 0 &&
                                                 <p className={styles.email}>{review.email}</p>
                                             }
                                         </div>
-                                        <p className={styles.text}>{review.text}</p>
+                                        <div className={styles.review_body}>
+                                            <p className={styles.text}>{review.text}</p>
+                                            {review?.img[0] &&
+                                                <div onClick={e=> {setModalIMG(review.img[0]); setModal3(true)}} className={styles.review_img}><Image loading="lazy" src={review.img[0]} layout='fill'></Image></div>
+                                            }
+                                        </div>
                                     </div>
                                 )}
                             </div>
@@ -180,6 +190,7 @@ const ProductPage = ({ fetchparfum, breadCrumbsItems }) => {
                                                 required: "Поле должно быть заполнено"
                                             }
                                     }></Textarea>
+                                    <Input className={styles.input} type="file" placeholder="Изображение" label="Изображение" name="img" errors={reviewErrors} field={reviewform} />
                                     <Button className={styles.button} disabled={btnLock}>Оставить отзыв</Button>
                                 </form>
                             </div>
@@ -231,6 +242,11 @@ const ProductPage = ({ fetchparfum, breadCrumbsItems }) => {
                         {!regError &&
                             <Button className={m_styles.m_button} onClick={e => setModal2(false)}>Закрыть</Button>
                         }
+                    </Modal>
+                    <Modal active={modal3} className={[m_styles.modal, styles.review_modal].join(' ')} setActive={setModal3} closable>
+                        <div className={styles.review_modal_inner}>
+                            <Image loading="lazy" src={modalIMG} layout='fill'></Image>
+                        </div>
                     </Modal>
                     
             </section>

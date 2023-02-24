@@ -6,7 +6,7 @@ const router = new Router();
 
 
 router.post('/', OrderController.create);
-//router.patch('/:id', roleMiddleware(['ADMIN']), ParfumController.update);
+router.patch('/:id', roleMiddleware(['ADMIN']), OrderController.updateStatus);
 //router.delete('/:id', roleMiddleware(['ADMIN']), ParfumController.remove);
 router.get('/', roleMiddleware(['ADMIN']), OrderController.getAll);
 router.get('/:id', OrderController.getOne);

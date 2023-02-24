@@ -7,5 +7,6 @@ const router = new Router();
 
 router.post('/', BookingController.create);
 router.get('/', roleMiddleware(['ADMIN']), BookingController.getAll);
+router.patch('/:id', roleMiddleware(['ADMIN']), BookingController.updateStatus);
 
 export default router;

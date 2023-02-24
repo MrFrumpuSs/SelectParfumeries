@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = 'https://parfum.beknazaryanstudio.ru:8080/api/order';
+const API_URL = 'https://selectparfumeries.ru:8080/api/order';
 
 export default class OrderService {
 
@@ -14,6 +14,23 @@ export default class OrderService {
                 cart: data.cart
             }, 
             { withCredentials: true });
+            return response; 
+        } catch (e) {
+            return e.response;
+        }
+    }
+
+    static async updateStatus(status, id) {
+        try {
+            const response = await axios.patch(API_URL + '/' + id, {
+                status: status
+            }, 
+            { 
+                withCredentials: true,
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem('token')
+                } 
+            });
             return response; 
         } catch (e) {
             return e.response;

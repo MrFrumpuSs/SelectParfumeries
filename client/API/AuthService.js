@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = 'https://parfum.beknazaryanstudio.ru:8080/api/auth';
+const API_URL = 'https://selectparfumeries.ru:8080/api/auth';
 
 export default class AuthService {
 

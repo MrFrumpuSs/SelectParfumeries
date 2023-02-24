@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /*admin
+Disallow: /page/
+Disallow: /&
+Disallow: /?
+Disallow: /*?
+Host: selectparfumeries.ru
+
+Sitemap: https://selectparfumeries.ru/sitemap.xml

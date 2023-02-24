@@ -1,0 +1,15 @@
+.pending {
+    select {
+        background-color: #F48B7C;
+    }
+}
+.processing {
+    select {
+        background-color: #F8BB54;
+    }
+}
+.done {
+    select {
+        background-color: #4ADE80;
+    }
+}

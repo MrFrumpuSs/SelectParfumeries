@@ -19,7 +19,7 @@ const PORT = config.get('serverPort');
 
 const app = express();
 
-app.use(cors({origin:['http://www.localhost:3000', 'http://localhost:3000', 'https://www.parfum.beknazaryanstudio.ru', 'https://parfum.beknazaryanstudio.ru'],credentials: true}));
+app.use(cors({origin:['https://www.selectparfumeries.ru', 'https://selectparfumeries.ru', 'http://localhost:3000', 'http://www.localhost:3000'],credentials: true}));
 app.use(express.json());
 app.use(express.static('static'));
 app.use(fileUpload({}));

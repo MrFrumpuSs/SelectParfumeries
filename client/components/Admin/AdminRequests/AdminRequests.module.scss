@@ -105,9 +105,11 @@
                     word-break: break-word;
                 }
                 &_email {
+                    justify-content: center;
+                }
+                &_status {
                     border-bottom: 1px solid #D5DAE1 !important;
                     padding-bottom: 10px;
-                    justify-content: center;
                 }
             }
         }

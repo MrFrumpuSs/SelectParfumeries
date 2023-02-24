@@ -5,7 +5,7 @@ import { getCart } from '../reducers/cartReducer';
 import { useRouter } from 'next/router';
 import AuthService from '../API/AuthService';
 
-const AuthProvider = ({ Component, pageProps }) => {
+const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const isAuth = useSelector((state) => state.user.isAuth);
     const dispatch = useDispatch();
@@ -21,11 +21,13 @@ const AuthProvider = ({ Component, pageProps }) => {
         }
         fetchAuth();
     }, [])
-    if(!loading) {
-        return(
-            <Component {...pageProps} />
-        ) 
-    }
+
+    return(
+        <>
+            {children}
+        </>
+    ) 
+    
     
 }
 

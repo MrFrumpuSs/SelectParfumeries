@@ -118,7 +118,7 @@ class ParfumService {
             {path: 'reviews',
             options: {
                 limit: 10,
-                sort: { created: -1},
+                sort: { _id: -1},
             } }
         ]);
 

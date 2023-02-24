@@ -6,6 +6,8 @@ import Link from 'next/link'
 import Pagination from '../../Pagination/Pagination'
 import { getPageCount } from '../../../utils/pages'
 import { useRouter } from 'next/router'
+import SetStatus from '../../SetStatus/SetStatus'
+import BookingService from '../../../API/BookingService'
 
 const AdminBookings = ({data, count, page, setPage}) => {
     const router = useRouter();
@@ -15,6 +17,9 @@ const AdminBookings = ({data, count, page, setPage}) => {
     page = page || 1;
     const changePage = (page) => {
         setPage(page, pathquery);
+    }
+    const setStatus = async (id, status) => {
+        const response = await BookingService.updateStatus(status, id);
     }
     return (
         <div className={styles.content}>
@@ -41,6 +46,7 @@ const AdminBookings = ({data, count, page, setPage}) => {
                             <td className={styles.item_fio}>{order.fio}</td>
                             <td className={styles.item_number}>{order.number}</td>
                             <td className={styles.item_email}>{order.email}</td>
+                            <td className={styles.item_status}><SetStatus className={styles.status_select} _id={order._id} status={order.status} setStatus={setStatus}></SetStatus></td>
                         </tr>
                     )}
                 </tbody>

@@ -5,6 +5,7 @@ const Review = new Schema({
     fio: {type: String, required: true},
     email: {type: String},
     text: {type: String, required: true},
+    img: {type: Array},
 });
 
 

@@ -2,7 +2,6 @@ import User from '../models/User.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import config from "config";
-import sendConfirm from '../messages/confirmEmail.js';
 import ApiError from '../controllers/ErrorController.js';
 class AuthService {
     async register(user) {

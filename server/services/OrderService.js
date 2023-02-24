@@ -2,8 +2,7 @@ import Order from '../models/Order.js';
 import Parfum from '../models/Parfum.js';
 import ApiError from '../controllers/ErrorController.js';
 import mongoose from "mongoose";
-import sendOrder from '../messages/orderEmail.js';
-
+import { sendOrder } from '../messages/orderEmail.js';
 
 
 class OrderService {
@@ -42,6 +41,12 @@ class OrderService {
 
         return createdOrder;
     }
+
+    async updateStatus(order, id) {
+        const updatedOrder = await Order.findOneAndUpdate({_id: id}, order, {new: true});
+        return updatedOrder;
+    }
+
     
     async getAll({limit, page}) {
         let offset = page * limit - limit;

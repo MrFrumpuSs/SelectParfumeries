@@ -10,6 +10,17 @@ class OrderController {
             next(e);
         }
     }
+
+    async updateStatus(req, res, next) {
+        try {
+            const { status } = req.body;
+            const { id } = req.params
+            const order = await OrderService.updateStatus({ status }, id);
+            res.json(order);
+        } catch (e) {
+            next(e);
+        }
+    }
     
     async getAll(req, res, next) {
         try {

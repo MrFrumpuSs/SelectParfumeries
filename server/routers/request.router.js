@@ -7,5 +7,6 @@ const router = new Router();
 
 router.post('/', RequestController.create);
 router.get('/', roleMiddleware(['ADMIN']), RequestController.getAll);
+router.patch('/:id', roleMiddleware(['ADMIN']), RequestController.updateStatus);
 
 export default router;

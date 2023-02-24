@@ -79,6 +79,17 @@
             }
         }
     }
+    .review_modal {
+        max-width: 600px;
+        &_inner {
+            position: relative;
+            height: 500px;
+            width: 500px;
+            img {
+                object-fit: cover;
+            }
+        }
+    }
     .reviews {
         margin-top: 50px;
         .title {
@@ -122,6 +133,17 @@
                     }
                     .text {
                         line-height: 24px;
+                        flex-grow: 1;
+                    }
+                    &_body {
+                        display: flex;
+                    }
+                    &_img {
+                        cursor: pointer;
+                        width: 100px;
+                        height: 100px;
+                        position: relative;
+                        margin-left: 15px;
                     }
                 }
             }
@@ -192,6 +214,13 @@
                 &:nth-child(even) {
                     margin-left: 0;
                 }
+            }
+        }
+        .review_modal {
+            max-width: 340px;
+            &_inner {
+                height: 320px;
+                width: 320px;
             }
         }
         .reviews {

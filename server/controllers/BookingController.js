@@ -11,6 +11,17 @@ class BookingController {
         }
     }
 
+    async updateStatus(req, res, next) {
+        try {
+            const { status } = req.body;
+            const { id } = req.params
+            const booking = await BookingService.updateStatus({ status }, id);
+            res.json(booking);
+        } catch (e) {
+            next(e);
+        }
+    }
+
     async getAll(req, res, next) {
         try {
             let {limit, page} = req.query;
