@@ -10,6 +10,7 @@ import num_word from '../utils/num_word';
 import Button from '../components/UI/Button/Button';
 import Breadcrumbs from '../components/UI/Breadcrumbs/Breadcrumbs'
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 const CartPage = ({breadCrumbsItems}) => {
     const router = useRouter();
@@ -51,6 +52,10 @@ const CartPage = ({breadCrumbsItems}) => {
     if(!loading) {
         return (
             <>
+                <Head>
+                    <title>Корзина - Select Parfumeries</title>
+                    <meta property="og:title" content='Корзина - Select Parfumeries' key="og-title"/>
+                </Head>
                 <Navbar></Navbar>
                 <section className={styles.cart}>
                     <Breadcrumbs className='container' data={breadCrumbsItems}></Breadcrumbs>

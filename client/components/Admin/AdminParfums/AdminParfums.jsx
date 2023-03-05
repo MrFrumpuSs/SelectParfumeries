@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
 import styles from './AdminParfums.module.scss'
 import Button from '../../UI/Button/Button'
@@ -7,10 +7,12 @@ import Pagination from '../../Pagination/Pagination'
 import { getPageCount } from '../../../utils/pages'
 import { useRouter } from 'next/router'
 import ParfumService from '../../../API/ParfumService'
+import Input from '../../UI/Input/Input'
 
 const AdminParfums = ({data, count, page, setPage, removeParfum}) => {
     const router = useRouter();
     const pageCount = getPageCount(count, 20);
+    const [s, setS] = useState('');
     let pathquery = router.query;
     delete pathquery.page;
     page = page || 1;
@@ -29,6 +31,10 @@ const AdminParfums = ({data, count, page, setPage, removeParfum}) => {
     const changePage = (page) => {
         setPage(page, pathquery);
     }
+
+    const Search = () => {
+        router.push({pathname: '/admin', query: { ...router.query, s: s }});
+    }
     
     const removeParfumConf = (id) => {
         ParfumService.delete(id);
@@ -36,7 +42,13 @@ const AdminParfums = ({data, count, page, setPage, removeParfum}) => {
     }
     return (
         <div className={styles.content}>
-            <h1 className={styles.title}>Ароматы</h1>
+            <div className={styles.head}>
+                <h1 className={styles.title}>Ароматы</h1>
+                <div className={styles.search} onClick={e => e.stopPropagation()}>
+                    <Input className={styles.input} value={s} onChange={e=> setS(e.target.value)} type="text" placeholder="Поиск..."></Input>
+                    <Button className={styles.button} onClick={e=> Search()}>Найти</Button>
+                </div>
+            </div>
             <table className={styles.table}>
                 <thead>
                     <tr className={styles.table_head}>
@@ -53,7 +65,7 @@ const AdminParfums = ({data, count, page, setPage, removeParfum}) => {
                                 <Image src={parfum.img[0]} layout="fill" loading='lazy'></Image>
                             </td>
                             <td className={styles.item_title}>{parfum.name}</td>
-                            <td className={styles.item_brand}>{parfum.brand.name}</td>
+                            <td className={styles.item_brand}>{parfum.brand?.name}</td>
                             <td className={styles.item_sex}>{getSex(parfum)}</td>
                             <td className={styles.item_btns}>
                                 <div className={styles.item_btns_inner}>

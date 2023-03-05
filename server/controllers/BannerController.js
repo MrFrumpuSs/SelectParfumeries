@@ -6,7 +6,6 @@ class BannerController {
             const { title, description, btnname, link, white } = req.body;
             const img = req.files?.img; 
             const url = 'https://' + req.get('host') + ':8080';
-          
 
             const banner = await BannerService.create({ title, description, btnname, link, white }, img, url);
             res.json(banner);
@@ -39,6 +38,15 @@ class BannerController {
         try {
             const banners = await BannerService.getAll();
             res.json(banners);
+        } catch (e) {
+            next(e);
+        }
+    }
+    async getOne(req, res, next) {
+        try {
+            const { id } = req.params;
+            const banner = await BannerService.getOne(id);
+            res.json(banner);
         } catch (e) {
             next(e);
         }

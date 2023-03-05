@@ -88,9 +88,10 @@ const ProductPage = ({ fetchparfum, breadCrumbsItems }) => {
         <Head>
             <title>{fetchparfum.name} - Select Parfumeries</title>
             <meta name="description" content={fetchparfum.description} />
-            <meta property="og:title" content={fetchparfum.name + ' - Select Parfumeries'}/>
-            <meta property="og:description" content={fetchparfum.name + ' - Select Parfumeries'}/>
-            <meta property="og:image" content={fetchparfum.img[0]}/>
+            <meta property="og:title" content={fetchparfum.name + ' - Select Parfumeries'} key="og-title"/>
+            <meta property="og:description" content={fetchparfum.description} key="og-description"/>
+            <meta property="og:image" content={fetchparfum.img[0]} key="og-image"/>
+            <meta property="og:type" content="product" key="og-type"/>
         </Head>
             <Navbar></Navbar>
             <section className={styles.card} itemScope itemType="http://schema.org/Product">
@@ -124,19 +125,22 @@ const ProductPage = ({ fetchparfum, breadCrumbsItems }) => {
                             </div>
                             {price.price === 0 
                             ?
-                            <div itemProp="price" className={styles.price_box}>
-                                <Button className={styles.btn} onClick={e=> modal ? setModal(false) : setModal(true)}>Запросить цену</Button>
+                            <div itemProp="offers" itemScope itemType="http://schema.org/Offer" className={styles.price_box}>
+                                <Button itemProp="price" content="0" className={styles.btn} onClick={e=> modal ? setModal(false) : setModal(true)}>Запросить цену</Button>
+                                <meta itemProp="priceCurrency" content="RUB" />
                             </div>
                             :
-                            <div itemProp="price" className={styles.price_box}>
+                            <div itemProp="offers" itemScope itemType="http://schema.org/Offer" className={styles.price_box}>
                                 {fetchparfum.sale && price.sale ?
                                     <>
-                                        <p className={styles.sale_price}>{price.price} ₽</p>
+                                        <p itemProp="price" content={price.price} className={styles.sale_price}>{price.price} ₽</p>
                                         <p className={styles.price}>{price.sale} ₽</p>
+                                        <meta itemProp="priceCurrency" content="RUB" />
                                     </>
                                     :
                                     <>
-                                        <p className={styles.price}>{price.price} ₽</p>
+                                        <p itemProp="price" content={price.price} className={styles.price}>{price.price} ₽</p>
+                                        <meta itemProp="priceCurrency" content="RUB" />
                                     </>
                                 }
                             </div>
@@ -150,17 +154,17 @@ const ProductPage = ({ fetchparfum, breadCrumbsItems }) => {
                     <div className={styles.reviews}>
                         <h1 className={styles.title}>Отзывы</h1>
                         <div className={styles.reviews_inner}>
-                            <div className={styles.left} itemProp="reviews">
+                            <div className={styles.left}>
                                 {fetchparfum.reviews.map(review=>
-                                    <div key={review._id} itemProp="review" className={styles.review}>
+                                    <div key={review._id} itemProp="review" itemScope itemType="http://schema.org/Review" className={styles.review}>
                                         <div className={styles.review_header}>
-                                            <h3 className={styles.fio}>{review.fio}</h3>
+                                            <h3 itemProp="author" className={styles.fio}>{review.fio}</h3>
                                             {review.email.length > 0 &&
                                                 <p className={styles.email}>{review.email}</p>
                                             }
                                         </div>
                                         <div className={styles.review_body}>
-                                            <p className={styles.text}>{review.text}</p>
+                                            <p itemProp="description" className={styles.text}>{review.text}</p>
                                             {review?.img[0] &&
                                                 <div onClick={e=> {setModalIMG(review.img[0]); setModal3(true)}} className={styles.review_img}><Image loading="lazy" src={review.img[0]} layout='fill'></Image></div>
                                             }

@@ -18,7 +18,7 @@ const AdminPage = ({ fetchparfums, parfumscount, page }) => {
     const [parfums, setParfums] = useState(fetchparfums);
     useEffect(() => {
         setParfums(fetchparfums);
-    }, [page])
+    }, [page, router.query])
     
 
     return (
@@ -37,8 +37,20 @@ const AdminPage = ({ fetchparfums, parfumscount, page }) => {
 export async function getServerSideProps(context) {
     const page = context.params.page;
 
+    const {raspiv, s} = context.query;
+
     let payload = {limit: 20, page: page, sort: '_id'};
     
+    if(raspiv) {
+        payload["raspiv"] = true;
+    } else {
+        payload["raspiv"] = 'undefined';
+    }
+
+    if(s) {
+        payload["s"] = s;
+    }
+
     const parfums = await ParfumService.getAll(payload);
     let fetchparfums = parfums.data.parfums;
     let parfumscount = parfums.data.count;

@@ -5,7 +5,7 @@ import styles from '../styles/admin.module.scss'
 import AdminAside from '../components/UI/Admin/AdminAside/AdminAside'
 import AdminParfums from '../components/Admin/AdminParfums/AdminParfums'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const AdminPage = ({ fetchparfums, parfumscount }) => {
     const router = useRouter();
@@ -16,6 +16,10 @@ const AdminPage = ({ fetchparfums, parfumscount }) => {
         setParfums(parfums.filter(e => e._id !== id));
     }
     const [parfums, setParfums] = useState(fetchparfums);
+
+    useEffect(() => {
+        setParfums(fetchparfums);
+    }, [router.query])
 
     return (
         <RequireAuth>
@@ -32,8 +36,20 @@ const AdminPage = ({ fetchparfums, parfumscount }) => {
 
 export async function getServerSideProps(context) {
     let payload = {limit: 20, sort: '_id'};
+    const {raspiv, s} = context.query;
     
+    if(raspiv) {
+        payload["raspiv"] = true;
+    } else {
+        payload["raspiv"] = 'undefined';
+    }
+    
+    if(s) {
+        payload["s"] = s;
+    }
+
     const parfums = await ParfumService.getAll(payload);
+
     let fetchparfums = parfums.data.parfums;
     let parfumscount = parfums.data.count;
 

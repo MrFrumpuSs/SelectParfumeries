@@ -3,6 +3,7 @@ import Navbar from '../../components/UI/Navbar/Navbar'
 import Footer from '../../components/UI/Footer/Footer'
 import styles from '../../styles/order/[id].module.scss'
 import OrderService from '../../API/OrderService'
+import Head from 'next/head'
 
 const OrderPage = ({fetchorder}) => {
     const getVariation = (item) => {
@@ -13,6 +14,10 @@ const OrderPage = ({fetchorder}) => {
     }
     return (
         <>
+            <Head>
+                <title>Чек - Select Parfumeries</title>
+                <meta property="og:title" content='Чек - Select Parfumeries' key="og-title"/>
+            </Head>
             <Navbar></Navbar>
             <section className={styles.order}>
                 <div className={[styles.inner, 'container'].join(' ')}>

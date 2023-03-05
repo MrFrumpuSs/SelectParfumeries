@@ -1,10 +1,17 @@
 import Navbar from "../components/UI/Navbar/Navbar"
 import Footer from "../components/UI/Footer/Footer"
 import Info from "../components/Info/Info"
+import Head from "next/head"
 
 const PaymentPage = () => {
     return (
         <>
+            <Head>
+                <title>Оплата - Select Parfumeries</title>
+                <meta name="description" content="Оплата осуществляется наличными или переводом на банковскую карту. После того, как Вы оформите заказ, нам придет уведомление. С Вами свяжется менеджер для уточнения информации в заказе и подробно расскажет о вариантах его оплаты." />
+                <meta property="og:title" content='Оплата - Select Parfumeries' key="og-title"/>
+                <meta property="og:description" content="Оплата осуществляется наличными или переводом на банковскую карту. После того, как Вы оформите заказ, нам придет уведомление. С Вами свяжется менеджер для уточнения информации в заказе и подробно расскажет о вариантах его оплаты." key="og-description"/>
+            </Head>
             <Navbar></Navbar>
             <Info title="Оплата">
                 <p>Оплата осуществляется наличными или переводом на банковскую карту.</p>

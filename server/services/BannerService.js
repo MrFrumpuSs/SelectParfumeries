@@ -16,7 +16,7 @@ class BannerService {
     async update(banner, id, img, url) {
         if(img) {
             let imgName = await imageUpload(img, url);
-            const updatedBanner = await Banner.findOneAndUpdate({_id: id}, {...banner, img: imgName}, {new: true});
+            const updatedBanner = await Banner.findOneAndUpdate({_id: id}, {...banner, img: imgName[0]}, {new: true});
             return updatedBanner;
         } else {
             const updatedBanner = await Banner.findOneAndUpdate({_id: id}, banner, {new: true});
@@ -40,6 +40,11 @@ class BannerService {
         return {banners};
     }
 
+    async getOne(id) {
+        const banner = await Banner.find({_id: id});
+
+        return {banner};
+    }
 }
 
 export default new BannerService();

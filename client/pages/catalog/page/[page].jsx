@@ -4,6 +4,7 @@ import ParfumService from "../../../API/ParfumService"
 import BrandService from "../../../API/BrandService"
 import Catalog from "../../../components/Catalog/Catalog"
 import { useRouter } from 'next/router'
+import Head from "next/head"
 
 const СatalogPage = ({fetchparfums, parfumscount, fetchbrands, page, breadCrumbsItems}) => {
     const router = useRouter();
@@ -12,6 +13,10 @@ const СatalogPage = ({fetchparfums, parfumscount, fetchbrands, page, breadCrumb
     }
     return (
         <>
+            <Head>
+                <title>Каталог - Select Parfumeries</title>
+                <meta property="og:title" content='Каталог - Select Parfumeries' key="og-title"/>
+            </Head>
             <Navbar></Navbar>
             <Catalog setPage={setPage} page={page} data={fetchparfums} brands={fetchbrands} count={parfumscount} breadCrumbsItems={breadCrumbsItems}></Catalog>
             <Footer></Footer>

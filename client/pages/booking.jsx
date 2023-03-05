@@ -10,6 +10,7 @@ import m_styles from '../styles/modal.module.scss';
 import Modal from '../components/UI/Modal/Modal';
 import { BiErrorCircle, BiCheckCircle } from "react-icons/bi";
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 const BookingPage = () => {
     const { register, watch, handleSubmit, formState: { errors } } = useForm();
@@ -31,6 +32,10 @@ const BookingPage = () => {
     }
     return (
         <>
+            <Head>
+                <title>Под заказ - Select Parfumeries</title>
+                <meta property="og:title" content='Под заказ - Select Parfumeries' key="og-title"/>
+            </Head>
             <Navbar></Navbar>
             <section className={styles.booking}>
                 <div className={[styles.inner, 'container'].join(' ')}>

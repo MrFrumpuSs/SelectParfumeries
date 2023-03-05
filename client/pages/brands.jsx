@@ -4,6 +4,7 @@ import Footer from '../components/UI/Footer/Footer'
 import BrandService from '../API/BrandService'
 import Link from 'next/link'
 import Breadcrumbs from '../components/UI/Breadcrumbs/Breadcrumbs'
+import Head from 'next/head'
 
 const BrandsPage = ({ fetchbrands, breadCrumbsItems }) => {
     fetchbrands.sort(function(a,b){
@@ -17,6 +18,10 @@ const BrandsPage = ({ fetchbrands, breadCrumbsItems }) => {
 
     return (
         <>
+            <Head>
+                <title>Бренды - Select Parfumeries</title>
+                <meta property="og:title" content='Бренды - Select Parfumeries' key="og-title"/>
+            </Head>
             <Navbar></Navbar>
             <section className={styles.brands}>
                 <Breadcrumbs className={[styles.breadcrumbs, 'container'].join(' ')} data={breadCrumbsItems}></Breadcrumbs>

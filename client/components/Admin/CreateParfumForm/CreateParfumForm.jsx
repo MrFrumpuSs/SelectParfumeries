@@ -28,7 +28,7 @@ const CreateParfumForm = ({fetchbrands, fetchparfum, submitForm, btnLock}) => {
             setValue("name", fetchparfum.name);
             setValue("description", fetchparfum.description);
             setValue("sex", fetchparfum.sex);
-            setValue("brand", fetchparfum.brand._id);
+            setValue("brand", fetchparfum.brand?._id);
             setValue("variations", fetchparfum.variations);
             setValue("characteristics", fetchparfum.characteristics);
             setValue("raspiv", fetchparfum.raspiv);

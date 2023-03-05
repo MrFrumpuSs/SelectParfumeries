@@ -2,10 +2,15 @@ import Navbar from "../components/UI/Navbar/Navbar"
 import Footer from "../components/UI/Footer/Footer"
 import Info from "../components/Info/Info"
 import styles from "../styles/contacts.module.scss"
+import Head from "next/head"
 
 const DeliveryPage = () => {
     return (
         <>
+            <Head>
+                <title>Контакты - Select Parfumeries</title>
+                <meta property="og:title" content='Контакты - Select Parfumeries' key="og-title"/>
+            </Head>
             <Navbar></Navbar>
             <Info title="Контакты">
                 <p>Select Parfumeries — это возможность приобрести ароматы по приятным ценам как целиком (под заказ), так и на распив от 5 мл.</p>

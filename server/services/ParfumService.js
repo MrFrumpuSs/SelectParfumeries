@@ -10,11 +10,6 @@ import { Console } from 'console';
 
 class ParfumService {
     async create(parfum, img, url) {
-        const candidate = await Parfum.findOne({name: parfum.name});
-
-        if(candidate) {
-            throw ApiError.BadRequest('Парфюм с введенным названием уже существует');
-        }
 
         let imgName = await imageUpload(img, url);
         
@@ -62,7 +57,7 @@ class ParfumService {
             payload["sale"] = sale;
         }
         if(s) {
-            payload["name"] = {$regex: new RegExp(s)};
+            payload["name"] = {$regex: new RegExp(s, "i")};
         }
         if(raspiv) {
             if(raspiv === 'undefined') {

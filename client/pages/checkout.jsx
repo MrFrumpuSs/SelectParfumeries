@@ -12,6 +12,7 @@ import { useRouter } from 'next/router';
 import OrderService from '../API/OrderService';
 import { useDispatch } from 'react-redux';
 import { removeCart } from '../reducers/cartReducer';
+import Head from 'next/head';
 
 const Checkout = () => {
     const dispatch = useDispatch();
@@ -65,6 +66,10 @@ const Checkout = () => {
     if(!loading) {
         return (
             <>
+                <Head>
+                    <title>Оформление заказа - Select Parfumeries</title>
+                    <meta property="og:title" content='Оформление заказа - Select Parfumeries' key="og-title"/>
+                </Head>
                 <Navbar></Navbar>
                 <section className={styles.checkout}>
                     <div className={[styles.inner, 'container'].join(' ')}>

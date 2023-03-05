@@ -1,10 +1,17 @@
 import Navbar from "../components/UI/Navbar/Navbar"
 import Footer from "../components/UI/Footer/Footer"
 import Info from "../components/Info/Info"
+import Head from "next/head"
 
 const DeliveryPage = () => {
     return (
         <>
+            <Head>
+                <title>Доставка - Select Parfumeries</title>
+                <meta name="description" content="1. Доставка по г. Сочи: - При сумме заказа до 10.000₽ Стоимость доставки составит 300₽ - При сумме заказа от 10.000₽ Стоимость доставки составит 150₽" />
+                <meta property="og:title" content='Доставка - Select Parfumeries' key="og-title"/>
+                <meta property="og:description" content="1. Доставка по г. Сочи: - При сумме заказа до 10.000₽ Стоимость доставки составит 300₽ - При сумме заказа от 10.000₽ Стоимость доставки составит 150₽" key="og-description"/>
+            </Head>
             <Navbar></Navbar>
             <Info title="Доставка">
             <p>
